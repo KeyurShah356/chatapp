@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chat App</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Firebase v9 compat (non-module) -->
+  <!-- Firebase v9 compat -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
   <script defer src="script.js"></script>
@@ -13,13 +13,11 @@
 <body>
   <h2>Welcome to Chatroom</h2>
   <div id="chat-box"></div>
-  
-  <div class="input-container">
+
+  <div class="form-container">
     <input type="text" id="username" placeholder="Your Name" />
     <input type="text" id="message" placeholder="Type a message..." />
-    <br>
-    <br>
-    <div class="btn-group">
+    <div class="button-group">
       <button id="sendBtn">Send</button>
       <button id="clearBtn">Clear Chat</button>
     </div>
