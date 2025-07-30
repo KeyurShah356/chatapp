@@ -2,12 +2,13 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
   background-color: #f7f7f7;
-  margin: 0;
   padding: 20px;
+  margin: 0;
 }
 
 #chat-box {
-  width: 90%;
+  width: 100%;
+  max-width: 500px;
   height: 300px;
   margin: 20px auto;
   padding: 10px;
@@ -15,38 +16,57 @@ body {
   background: #fff;
   overflow-y: scroll;
   text-align: left;
+  border-radius: 8px;
 }
 
-.input-group {
+.input-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 input {
   padding: 10px;
-  width: 200px;
-  max-width: 90%;
+  width: 90%;
+  max-width: 300px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 button {
   padding: 10px 15px;
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  background-color: #2196F3;
+  color: white;
+  cursor: pointer;
 }
 
-/* ✅ Responsive for small screens */
-@media (max-width: 600px) {
+button:hover {
+  background-color: #0b7dda;
+}
+
+/* ✅ Responsive for small devices */
+@media (max-width: 480px) {
   #chat-box {
     height: 250px;
   }
 
   input, button {
-    width: 100%;
+    width: 90%;
+    max-width: none;
+  }
+
+  .btn-group {
+    flex-direction: column;
   }
 }
