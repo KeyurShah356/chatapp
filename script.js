@@ -1,4 +1,4 @@
-// ✅ Firebase config
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyDQU7KUyN3B6gkNOFDRdUq2RlDJlYwQH8Q",
   authDomain: "k-s-chatbox.firebaseapp.com",
@@ -10,11 +10,11 @@ const firebaseConfig = {
   measurementId: "G-GLMEXCVTZ3"
 };
 
-// ✅ Initialize
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// ✅ Send Message
+// Send message
 document.getElementById("sendBtn").addEventListener("click", () => {
   const name = document.getElementById("username").value.trim();
   const msg = document.getElementById("message").value.trim();
@@ -25,7 +25,7 @@ document.getElementById("sendBtn").addEventListener("click", () => {
   }
 });
 
-// ✅ Display Messages
+// Listen for new messages
 db.ref("messages").on("child_added", (snapshot) => {
   const data = snapshot.val();
   const div = document.createElement("div");
@@ -33,10 +33,8 @@ db.ref("messages").on("child_added", (snapshot) => {
   document.getElementById("chat-box").appendChild(div);
 });
 
-// ✅ Clear Chat
+// Clear chat
 document.getElementById("clearBtn").addEventListener("click", () => {
-  if (confirm("Are you sure you want to clear the chat?")) {
-    db.ref("messages").remove();
-    document.getElementById("chat-box").innerHTML = "";
-  }
+  db.ref("messages").remove();
+  document.getElementById("chat-box").innerHTML = "";
 });
