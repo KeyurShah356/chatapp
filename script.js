@@ -14,7 +14,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// ✅ Send
+// ✅ Send Message
 document.getElementById("sendBtn").addEventListener("click", () => {
   const name = document.getElementById("username").value.trim();
   const msg = document.getElementById("message").value.trim();
@@ -25,10 +25,18 @@ document.getElementById("sendBtn").addEventListener("click", () => {
   }
 });
 
-// ✅ Listen
+// ✅ Display Messages
 db.ref("messages").on("child_added", (snapshot) => {
   const data = snapshot.val();
   const div = document.createElement("div");
   div.textContent = `${data.name}: ${data.text}`;
   document.getElementById("chat-box").appendChild(div);
+});
+
+// ✅ Clear Chat
+document.getElementById("clearBtn").addEventListener("click", () => {
+  if (confirm("Are you sure you want to clear the chat?")) {
+    db.ref("messages").remove();
+    document.getElementById("chat-box").innerHTML = "";
+  }
 });
